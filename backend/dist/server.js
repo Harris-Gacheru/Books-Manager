@@ -7,6 +7,6 @@ const express_1 = __importDefault(require("express"));
 const app = (0, express_1.default)();
 const PORT = 5690;
 app.listen(PORT, () => {
-    console.log(`App running on port ${PORT}`);
+    console.log(`App running on port: ${PORT}`);
 });
 //# sourceMappingURL=server.js.map
