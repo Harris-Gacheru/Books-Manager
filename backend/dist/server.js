@@ -5,9 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const books_routes_1 = __importDefault(require("./routes/books.routes"));
+const users_routes_1 = __importDefault(require("./routes/users.routes"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use('/bm', books_routes_1.default);
+app.use('/bm', users_routes_1.default);
 const PORT = 5690;
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);
