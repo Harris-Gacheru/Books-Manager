@@ -11,4 +11,5 @@ router.get('/books', books_controller_1.getBooks);
 router.get('/books/:id', books_controller_1.getBook);
 router.patch('/books/:id', books_controller_1.updateBook);
 router.delete('/books/:id', books_controller_1.deleteBook);
+exports.default = router;
 //# sourceMappingURL=books.routes.js.map

@@ -6,3 +6,5 @@ insert into books(id, name, pages, image, author)
 values(@id, @name, @pages, @image, @author)
 
 END
+
+-- exec createBook @id = 12345, @name = 'Kidagaa Kimemwozea', @pages = 89, @image = '', @author = 'Harrison'

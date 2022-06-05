@@ -12,7 +12,7 @@ export const createBook: RequestHandler = async(req, res) => {
         await pool.request()
         .input('id', mssql.VarChar, id)
         .input('name', mssql.VarChar, name)
-        .input('pages', mssql.VarChar, pages)
+        .input('pages', mssql.Int, pages)
         .input('image', mssql.VarChar, image)
         .input('author', mssql.VarChar, author)
         .execute('createBook')
@@ -29,6 +29,9 @@ export const getBooks: RequestHandler = async(req, res) => {
         let pool = await mssql.connect(sqlConfig)
         const books = await pool.request().execute('getbooks')
 
+        if (!books.recordset[0]) {
+            res.json({message: 'No books available'})
+        }
         res.json(books.recordset)
     } catch (error: any) {
         res.json({error: error.message})
@@ -47,8 +50,9 @@ export const getBook: RequestHandler<{id: string}> = async(req, res) => {
 
         if (!book.recordset[0]) {
             res.json({message: `Book with id ${id} does not exist`})
+        } else{
+            res.json(book.recordset)
         }
-        res.json(book.recordset)
     } catch (error: any) {
         res.json({error: error.message})
     }

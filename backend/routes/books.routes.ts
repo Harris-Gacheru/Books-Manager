@@ -8,3 +8,5 @@ router.get('/books', getBooks)
 router.get('/books/:id', getBook)
 router.patch('/books/:id', updateBook)
 router.delete('/books/:id', deleteBook)
+
+export default router

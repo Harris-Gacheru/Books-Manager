@@ -24,7 +24,7 @@ const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         yield pool.request()
             .input('id', mssql_1.default.VarChar, id)
             .input('name', mssql_1.default.VarChar, name)
-            .input('pages', mssql_1.default.VarChar, pages)
+            .input('pages', mssql_1.default.Int, pages)
             .input('image', mssql_1.default.VarChar, image)
             .input('author', mssql_1.default.VarChar, author)
             .execute('createBook');
@@ -39,6 +39,9 @@ const getBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         let pool = yield mssql_1.default.connect(sqlconfig_1.default);
         const books = yield pool.request().execute('getbooks');
+        if (!books.recordset[0]) {
+            res.json({ message: 'No books available' });
+        }
         res.json(books.recordset);
     }
     catch (error) {
@@ -56,7 +59,9 @@ const getBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!book.recordset[0]) {
             res.json({ message: `Book with id ${id} does not exist` });
         }
-        res.json(book.recordset);
+        else {
+            res.json(book.recordset);
+        }
     }
     catch (error) {
         res.json({ error: error.message });
