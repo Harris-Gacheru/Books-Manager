@@ -54,14 +54,14 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             if (user.recordset[0].password === password) {
                 const payload = yield pool.request().query(`select username, email from users where email = '${email}'`);
                 const token = jsonwebtoken_1.default.sign(payload, process.env.SECRET_KEY);
-                res.json({ message: 'Logged in successfully', user: user.recordset[0], token: token });
+                res.status(200).json({ message: 'Logged in successfully', user: user.recordset[0], token: token });
             }
             else {
-                res.json({ message: 'Invalid credentials' });
+                res.status(400).send({ message: 'Invalid credentials' });
             }
         }
         else {
-            res.json({ message: 'Invalid credentials' });
+            res.status(400).send({ message: 'Invalid credentials' });
         }
     }
     catch (error) {

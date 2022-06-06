@@ -51,7 +51,7 @@ export const getBook: RequestHandler<{id: string}> = async(req, res) => {
         if (!book.recordset[0]) {
             res.json({message: `Book with id ${id} does not exist`})
         } else{
-            res.json(book.recordset)
+            res.json(book.recordset[0])
         }
     } catch (error: any) {
         res.json({error: error.message})

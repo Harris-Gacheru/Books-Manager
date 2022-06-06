@@ -47,12 +47,12 @@ export const login: RequestHandler = async(req, res) => {
 
                 const token = jwt.sign(payload, process.env.SECRET_KEY as string)
 
-                res.json({message: 'Logged in successfully', user: user.recordset[0], token: token})
+                res.status(200).json({message: 'Logged in successfully', user: user.recordset[0], token: token})
             }else{
-                res.json({message: 'Invalid credentials'})
+                res.status(400).send({message: 'Invalid credentials'})
             }
         } else {
-            res.json({message: 'Invalid credentials'})
+            res.status(400).send({message: 'Invalid credentials'})
         }
     } catch (error: any) {
         res.json({error: error.message})

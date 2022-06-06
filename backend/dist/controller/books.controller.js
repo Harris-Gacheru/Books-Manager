@@ -60,7 +60,7 @@ const getBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             res.json({ message: `Book with id ${id} does not exist` });
         }
         else {
-            res.json(book.recordset);
+            res.json(book.recordset[0]);
         }
     }
     catch (error) {
