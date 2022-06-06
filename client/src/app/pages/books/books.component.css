@@ -6,7 +6,7 @@
 
 .content{
     width: 100vw;
-    height: calc(100vh - 64px);
+    height: 100%;
     padding: 40px 25px;
 }
 
@@ -21,7 +21,6 @@ h4{
 
 .card{
     padding: 0;
-    margin: 10px 0;
     border: none;
     box-shadow: 0px 0px 1px #888;
     cursor: pointer;
@@ -29,7 +28,7 @@ h4{
 }
 
 .card:hover{
-    margin-top: -2px;
+    margin-top: -4px;
     box-shadow: 0px 0px 3px #888;
 }
 
@@ -47,4 +46,27 @@ h4{
 
 .details p{
     margin: 10px 0;
+    color: #000;
+}
+
+.details p span{
+    font-weight: bold;
+}
+
+.action{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.action a{
+    padding: 8px 25px;
+    color: #000;
+    box-shadow: 0px 0px 1px #888;
+    background-color: #f0f0f0;
+    text-decoration: none;
+}
+
+.action a:hover{
+    background-color: #d7d7d7;
 }
