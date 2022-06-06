@@ -26,7 +26,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             .input('email', mssql_1.default.VarChar, email)
             .execute('getuser');
         if (user.recordset[0]) {
-            res.json({ message: `User already exists` });
+            res.status(400).json({ message: `User already exists` });
         }
         else {
             yield pool.request()
@@ -35,7 +35,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 .input('email', mssql_1.default.VarChar, email)
                 .input('password', mssql_1.default.VarChar, password)
                 .execute('registeruser');
-            res.json({ message: 'User created successfully' });
+            res.status(200).json({ message: 'User created successfully' });
         }
     }
     catch (error) {

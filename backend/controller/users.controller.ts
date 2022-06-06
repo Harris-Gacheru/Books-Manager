@@ -15,7 +15,7 @@ export const register: RequestHandler = async(req, res) => {
         .execute('getuser')
 
         if (user.recordset[0]) {
-            res.json({message: `User already exists`})
+            res.status(400).json({message: `User already exists`})
         } else {
             await pool.request()
             .input('id', mssql.VarChar, id)
@@ -24,7 +24,7 @@ export const register: RequestHandler = async(req, res) => {
             .input('password', mssql.VarChar, password)
             .execute('registeruser')
 
-            res.json({message: 'User created successfully'})
+            res.status(200).json({message: 'User created successfully'})
         }
 
     } catch (error: any) {
