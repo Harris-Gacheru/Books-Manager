@@ -10,14 +10,14 @@
                 <a  routerLink="/add-books" routerLinkActive="active">Add Book</a>
             </li>
         </ul>
-    </div>
 
-    <ul class="user-menu">
-        <li *ngIf="!authService.isLoggedin()">
-            <a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">Login</a>
-        </li>
-        <li *ngIf="authService.isLoggedin()">
-            <button (click)="authService.logout()">Logout</button>
-        </li>
-    </ul>
+        <ul class="user-menu">
+            <li *ngIf="!authService.isLoggedin()">
+                <a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">Login</a>
+            </li>
+            <li *ngIf="authService.isLoggedin()">
+                <button (click)="authService.logout()">Logout</button>
+            </li>
+        </ul>
+    </div>
 </nav>
