@@ -1,9 +1,9 @@
-create or alter procedure createBook @id varchar(255), @name varchar(100), @pages int, @image varchar(255), @author varchar(100)
+create or alter procedure createBook @id varchar(255), @name varchar(100), @pages int, @image varchar(255), @author varchar(100), @description varchar(400)
 AS 
 BEGIN
 
-insert into books(id, name, pages, image, author)
-values(@id, @name, @pages, @image, @author)
+insert into books(id, name, pages, image, author, description)
+values(@id, @name, @pages, @image, @author, @description)
 
 END
 

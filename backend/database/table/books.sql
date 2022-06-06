@@ -3,5 +3,6 @@ create table books(
     name varchar(100) not null,
     pages int not null,
     image varchar(255),
-    author varchar(100) not null
+    author varchar(100) not null,
+    description varchar(400) not null
 )

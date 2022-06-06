@@ -3,5 +3,6 @@ export interface Book {
     name: string,
     pages: number,
     image: string,
-    author: string
+    author: string,
+    description: string
 }

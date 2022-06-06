@@ -23,7 +23,7 @@ export class BooksService {
   }
 
   updateBook(id: String, bookdetails: {pages: number, image: string}){
-    return this.http.patch(`http://localhost:5690/bm/books/${id}`, bookdetails)
+    return this.http.patch<any>(`http://localhost:5690/bm/books/${id}`, bookdetails)
   }
 
   deleteBook(id: string){
