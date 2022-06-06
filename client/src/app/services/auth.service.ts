@@ -18,6 +18,10 @@ export class AuthService {
     return this.http.post<any>('http://localhost:5690/bm/register', user)
   }
 
+  getToken(){
+    return localStorage.getItem('token')
+  }
+
   isLoggedin(){
     return !!localStorage.getItem('token')
   }

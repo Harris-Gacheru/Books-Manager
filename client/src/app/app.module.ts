@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { ViewBookComponent } from './pages/view-book/view-book.component';
 import { EditBookComponent } from './pages/edit-book/edit-book.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { JwtinterceptorService } from './services/jwtinterceptor.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,13 @@ import { IonicModule } from '@ionic/angular';
     HttpClientModule,
     IonicModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtinterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
