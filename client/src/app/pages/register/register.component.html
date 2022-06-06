@@ -2,7 +2,12 @@
     <app-navbar></app-navbar>
     <div class="content">
         <form [formGroup]="registerForm">
+            <p *ngIf="error" style="color: red;">{{ error }}</p>
+            <p *ngIf="msg" style="color: green;">{{ msg }}</p>
+            
             <h4>Register</h4>
+            <p *ngIf="registerForm.invalid" style="font-size: 14px; color: #888;">*Fill in all fields to enable button</p>
+
             <div class="form-group">
                 <label for="username">User Name</label>
                 <input type="text" formControlName="username">

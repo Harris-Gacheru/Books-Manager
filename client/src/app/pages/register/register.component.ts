@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,15 +15,28 @@ export class RegisterComponent implements OnInit {
     password: ['', Validators.required],
   })
 
-  constructor(private fb: FormBuilder, private authService: AuthService) { }
+  error: string = ''
+  msg: string = ''
+
+  constructor(private fb: FormBuilder, private authService: AuthService, private route: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    this.authService.register(this.registerForm.value).subscribe(res => {
-      console.log(res)
-    })
+    this.authService.register(this.registerForm.value).subscribe(
+      (res) => {
+        this.error = ''
+        this.msg = res.message
+
+        setTimeout(() => {
+          this.route.navigate(['/login'])
+        }, 1200)
+      },
+      (error) => {
+        this.error = error.error.message
+      }
+    )
   }
 
 }

@@ -15,7 +15,7 @@ export class AuthService {
   }
 
   register(user:  {username: string, email: string, password: string}){
-    return this.http.post('http://localhost:5690/bm/register', user)
+    return this.http.post<any>('http://localhost:5690/bm/register', user)
   }
 
   isLoggedin(){
