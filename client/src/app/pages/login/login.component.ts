@@ -27,10 +27,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.loginForm.value)
     this.authService.login(this.loginForm.value).subscribe(
       (res) => {
-        console.log(res)
         this.error = ''
         this.msg = res.message
         localStorage.setItem('token', res.token)
@@ -38,12 +36,12 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           if (this.authService.redirectUrl == null) {
             this.route.navigate(['/books'])
+          }else{
+            this.route.navigate([this.authService.redirectUrl])
           }
-          this.route.navigate([this.authService.redirectUrl])
         }, 1000)
       }, 
       (error) => {
-        console.log(error.error.message)
         this.error = error.error.message
       }
     )
