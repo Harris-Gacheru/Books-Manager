@@ -11,7 +11,7 @@ export class BooksService {
   constructor(private http: HttpClient) { }
 
   addBook(book: Book){
-    return this.http.post<Book>('http://localhost:5690/bm/create', book)
+    return this.http.post<any>('http://localhost:5690/bm/create', book)
   }
 
   getBooks(){

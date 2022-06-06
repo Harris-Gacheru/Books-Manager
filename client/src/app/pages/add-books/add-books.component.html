@@ -2,25 +2,38 @@
     <app-navbar></app-navbar>
     <div class="content">
         <form [formGroup]="addbookForm">
+            <p *ngIf="error" style="color: red;">{{ error }}</p>
+            <p *ngIf="msg" style="color: green;">{{ msg }}</p>
+
             <h4>Add book</h4>
-            <div class="form-group">
-                <label for="title">Book Title</label>
-                <input type="text" formControlName="name">
+
+            <div class="group">
+                <div class="form-group">
+                    <label for="title">Book Title</label>
+                    <input type="text" formControlName="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="pages">Pages</label>
+                    <input type="number" formControlName="pages">
+                </div>
+            </div>
+            
+            <div class="group">
+                <div class="form-group">
+                    <label for="image">Cover Image</label>
+                    <input type="text" formControlName="image">
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" formControlName="author">
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="pages">Pages</label>
-                <input type="number" formControlName="pages">
-            </div>
-            
-            <div class="form-group">
-                <label for="image">Cover Image</label>
-                <input type="text" formControlName="image">
-            </div>
-            
-            <div class="form-group">
-                <label for="author">Author</label>
-                <input type="text" formControlName="author">
+                <label for="description">Description</label>
+                <textarea name="description" rows="5" formControlName="description"></textarea>
             </div>
             
             <button type="submit" [disabled]="addbookForm.invalid" (click)="onSubmit()">Add Book</button>
