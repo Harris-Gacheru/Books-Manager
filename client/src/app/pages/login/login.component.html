@@ -1,0 +1,24 @@
+<div class="wrapper">
+    <app-navbar></app-navbar>
+    <div class="content">
+        <form [formGroup]="loginForm">
+            <p *ngIf="error" style="color: red;">{{ error }}</p>
+            <p *ngIf="msg" style="color: green;">{{ msg }}</p>
+            <h4>Login</h4>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email">
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password"  formControlName="password">
+            </div>
+            
+            <p>
+                Don't have an account? <a routerLink="/register">  Sign up</a>
+            </p>
+            <button type="submit" [disabled]="loginForm.invalid" (click)="onSubmit()" >Login</button>
+        </form>
+    </div>
+</div>

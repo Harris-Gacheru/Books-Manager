@@ -1,0 +1,23 @@
+<nav>
+    <h4>Book Manager</h4>
+
+    <div class="menu">
+        <ul class="sub-menu">
+            <li>
+                <a routerLink="/books" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Books</a>
+            </li>
+            <li>
+                <a  routerLink="/add-books" routerLinkActive="active">Add Book</a>
+            </li>
+        </ul>
+    </div>
+
+    <ul class="user-menu">
+        <li *ngIf="!authService.isLoggedin()">
+            <a routerLink="/" routerLinkActive="active"  [routerLinkActiveOptions]="{exact: true}">Login</a>
+        </li>
+        <li *ngIf="authService.isLoggedin()">
+            <button (click)="authService.logout()">Logout</button>
+        </li>
+    </ul>
+</nav>

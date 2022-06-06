@@ -1,0 +1,49 @@
+nav{
+    width: 100vw;
+    padding: 20px 40px;
+    background-color: rgb(12, 0, 46);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h4{
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.menu{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+a:hover{
+    color: rgb(217, 214, 46);
+}
+
+.active{
+    color: rgb(217, 214, 46);
+}
+
+button{
+    padding: 4px 10px;
+    border-radius: 5px;
+}

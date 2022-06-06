@@ -1,0 +1,38 @@
+<div class="wrapper">
+    <app-navbar></app-navbar>
+    <div class="content">
+        <div class="redirect">
+            <a routerLink="../">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+                Go back
+            </a>
+        </div>
+        <div class="book-wrapper" *ngIf="book">
+            <div class="image">
+                <img src='{{ book.image }}' alt="">
+            </div>
+
+            <div class="details">
+                <div>
+                    <h5>Description: </h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec scelerisque risus risus, eu consectetur ligula ornare at. Fusce sed nulla rhoncus, luctus est id, efficitur libero. Sed mauris nisl, mollis sed condimentum sit amet, sagittis id nisl. Phasellus arcu ligula, semper id ligula laoreet, lobortis consectetur felis. Fusce pulvinar ligula non magna vulputate, et consequat velit congue. </p>
+                </div>
+                
+                <div>
+                    <h5>Book title: </h5>
+                    <p>{{ book.name }}</p>
+                </div>
+                
+                <div>
+                    <h5>Author: </h5>
+                    <p>{{ book.author }}</p>
+                </div>
+
+                <div class="actions">
+                    <a [routerLink]="['/books/edit', book.id]" class="edit">Edit</a>
+                    <a (click)="delete(book.id)" class="delete">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
