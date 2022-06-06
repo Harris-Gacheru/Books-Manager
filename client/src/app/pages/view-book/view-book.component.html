@@ -35,6 +35,8 @@
                 <div class="actions">
                     <a [routerLink]="['/books/edit', book.id]" class="edit">Edit</a>
                     <a (click)="delete(book.id)" class="delete">Delete</a>
+
+                    <p *ngIf="msg" style="color: red;">{{ msg }}</p>
                 </div>
             </div>
         </div>

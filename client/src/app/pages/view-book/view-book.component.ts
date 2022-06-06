@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/interfaces/book';
 import { BooksService } from 'src/app/services/books.service';
 
@@ -11,8 +11,9 @@ import { BooksService } from 'src/app/services/books.service';
 export class ViewBookComponent implements OnInit {
   book?: Book
   id: string = ''
+  msg: string = ''
 
-  constructor(private booksService: BooksService, private route: ActivatedRoute) { }
+  constructor(private booksService: BooksService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -27,9 +28,12 @@ export class ViewBookComponent implements OnInit {
   }
 
   delete(id: string){
-    console.log(id)
     this.booksService.deleteBook(id).subscribe(info => {
       console.log(info)
+      this.msg = 'Deleting...'
+      setTimeout(() => {
+        this.router.navigate(['/books'])
+      }, 1200)
     })
   }
 
