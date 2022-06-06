@@ -1,19 +1,46 @@
 <div class="wrapper">
     <app-navbar></app-navbar>
     <div class="content">
-        <form [formGroup]="editForm">
-            <h4>Edit Book</h4>
-            <div class="form-group">
-                <label for="pages">Pages</label>
-                <input type="number" formControlName="pages">
+        <a [routerLink]="['/books/', book.id]" class="redirect" *ngIf="book">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+            Go back
+        </a>
+
+        <form [formGroup]="editForm" *ngIf="editForm">
+            <p *ngIf="error" style="color: red;">{{ error }}</p>
+            <p *ngIf="msg" style="color: green;">{{ msg }}</p>
+
+            <h4>Edit book</h4>
+            <div class="group">
+                <div class="form-group">
+                    <label for="title">Book Title</label>
+                    <input type="text" formControlName="name" value="{{ book.name }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="pages">Pages</label>
+                    <input type="number" formControlName="pages">
+                </div>
             </div>
             
-            <div class="form-group">
-                <label for="image">Cover Image</label>
-                <input type="text" formControlName="image">
+            <div class="group">
+                <div class="form-group">
+                    <label for="image">Cover Image</label>
+                    <input type="text" formControlName="image">
+                </div>
+                
+                <div class="form-group">
+                    <label for="author">Author</label>
+                    <input type="text" formControlName="author">
+                </div>
             </div>
 
-            <button type="submit" [disabled]="editForm.invalid" (click)="onSubmit()">Update Book</button>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" rows="5" formControlName="description"></textarea>
+            </div>
+            
+            <button type="submit" [disabled]="!editForm.dirty" (click)="onSubmit()">Edit Book</button>
         </form>
     </div>
 </div>
