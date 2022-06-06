@@ -11,7 +11,6 @@ export class NavbarComponent implements OnInit {
   constructor(public authService: AuthService) { }
 
   ngOnInit(): void {
-    console.log(this.authService.isLoggedin())
   }
 
 }
