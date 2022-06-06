@@ -19,7 +19,7 @@ const sqlconfig_1 = __importDefault(require("../config/sqlconfig"));
 const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = (0, uuid_1.v1)();
-        const { name, pages, image, author } = req.body;
+        const { name, pages, image, author, description } = req.body;
         let pool = yield mssql_1.default.connect(sqlconfig_1.default);
         yield pool.request()
             .input('id', mssql_1.default.VarChar, id)
@@ -27,8 +27,9 @@ const createBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             .input('pages', mssql_1.default.Int, pages)
             .input('image', mssql_1.default.VarChar, image)
             .input('author', mssql_1.default.VarChar, author)
+            .input('description', mssql_1.default.VarChar, description)
             .execute('createBook');
-        res.json({ message: 'Book created successfully' });
+        res.status(200).json({ message: 'Book created successfully' });
     }
     catch (error) {
         res.json({ error: error.message });
@@ -71,7 +72,7 @@ exports.getBook = getBook;
 const updateBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const id = req.params.id;
-        const { pages, image } = req.body;
+        const { name, pages, image, author, description } = req.body;
         let pool = yield mssql_1.default.connect(sqlconfig_1.default);
         const book = yield pool.request()
             .input('id', mssql_1.default.VarChar, id)
@@ -79,8 +80,11 @@ const updateBook = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         if (book.recordset[0]) {
             yield pool.request()
                 .input('id', mssql_1.default.VarChar, id)
+                .input('name', mssql_1.default.VarChar, name)
                 .input('pages', mssql_1.default.Int, pages)
                 .input('image', mssql_1.default.VarChar, image)
+                .input('author', mssql_1.default.VarChar, author)
+                .input('description', mssql_1.default.VarChar, description)
                 .execute('updatebook');
             res.json({ message: 'Updated successfully' });
         }
