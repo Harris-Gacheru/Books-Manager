@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit {
         }, 1200)
       },
       (error) => {
-        this.error = error.error.message
+        console.log(error)
+        this.error = error
       }
     )
   }
