@@ -1,6 +1,6 @@
 [build]
 
-command = "CI='' ng build"
+command = "CI='' npm run build"
 
 publish = "client/dist/client"
 
