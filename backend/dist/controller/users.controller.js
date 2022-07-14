@@ -65,7 +65,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         }
     }
     catch (error) {
-        res.json({ error: error.message });
+        res.json({ error: error });
     }
 });
 exports.login = login;
