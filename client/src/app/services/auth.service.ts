@@ -11,11 +11,11 @@ export class AuthService {
   constructor(private http: HttpClient, private route: Router) { }
 
   login(loginDetails: {email: string, password: string}){
-    return this.http.post<any>('http://localhost:5690/bm/login', loginDetails)
+    return this.http.post<any>('http://localhost:9000/.netlify/functions/server/api/login', loginDetails)
   }
 
   register(user:  {username: string, email: string, password: string}){
-    return this.http.post<any>('http://localhost:5690/bm/register', user)
+    return this.http.post<any>('http://localhost:9000/.netlify/functions/server/api/register', user)
   }
 
   getToken(){
