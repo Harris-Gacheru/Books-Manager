@@ -1,0 +1,7 @@
+[build]
+
+command = "CI='' ng build"
+
+publish = "client/dist/client"
+
+functions = "functions"

@@ -1,7 +1,0 @@
-[build]
-
-command = "ng build"
-
-publish = "dist/client"
-
-functions = "functions"
