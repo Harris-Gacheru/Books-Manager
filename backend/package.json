@@ -5,7 +5,8 @@
   "main": "dist/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon dist/server.js"
+    "start": "netlify-lambda serve dist",
+    "build": "cd client && npm install && ng build && cd ../ && netlify-lambda build dist"
   },
   "keywords": [],
   "author": "",
@@ -16,7 +17,9 @@
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
     "mssql": "^8.1.2",
+    "netlify-lambda": "^2.0.15",
     "nodemon": "^2.0.16",
+    "serverless-http": "^3.0.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
