@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "netlify-lambda serve dist",
-    "build": "cd ../client && ng build && netlify-lambda build dist"
+    "build": "netlify-lambda build dist && cd ../client && ng build"
   },
   "keywords": [],
   "author": "",
