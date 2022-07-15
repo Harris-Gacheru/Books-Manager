@@ -15,6 +15,7 @@ export class BooksComponent implements OnInit {
   ngOnInit(): void {
     this.booksService.getBooks().subscribe(data => {
       this.books = data
+      console.log(data)
     })
   }
 
