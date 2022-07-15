@@ -42,6 +42,7 @@ export const login: RequestHandler = async(req, res) => {
         .execute('getuser')
 
         if (user.recordset[0]) {
+            res.send('User exists')
             if (user.recordset[0].password === password) {
                 const payload = await pool.request().query(`select username, email from users where email = '${email}'`)
 
