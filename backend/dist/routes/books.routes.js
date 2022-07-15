@@ -8,7 +8,7 @@ const books_controller_1 = require("../controller/books.controller");
 const verifytoken_1 = require("../middleware/verifytoken");
 const router = express_1.default.Router();
 router.post('/create', verifytoken_1.verifyToken, books_controller_1.createBook);
-router.get('/books', verifytoken_1.verifyToken, books_controller_1.getBooks);
+router.get('/books', books_controller_1.getBooks);
 router.get('/books/:id', verifytoken_1.verifyToken, books_controller_1.getBook);
 router.patch('/books/:id', verifytoken_1.verifyToken, books_controller_1.updateBook);
 router.delete('/books/:id', verifytoken_1.verifyToken, books_controller_1.deleteBook);

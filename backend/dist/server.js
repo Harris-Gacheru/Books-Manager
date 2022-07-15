@@ -13,7 +13,7 @@ app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use(apiRoute, books_routes_1.default);
 app.use(apiRoute, users_routes_1.default);
-const PORT = 5690;
+const PORT = process.env.PORT || 5690;
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`);
 });

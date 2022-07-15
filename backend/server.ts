@@ -12,7 +12,7 @@ app.use(cors())
 app.use(apiRoute, router)
 app.use(apiRoute, auth_router)
 
-const PORT = 5690
+const PORT = process.env.PORT || 5690
 
 app.listen(PORT, () => {
     console.log(`App running on port ${PORT}`)
