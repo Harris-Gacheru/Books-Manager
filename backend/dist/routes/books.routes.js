@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const books_controller_1 = require("../controller/books.controller");
 const verifytoken_1 = require("../middleware/verifytoken");
 const router = express_1.default.Router();
+router.get('/', (req, res) => { res.send('Get books'); });
 router.post('/create', verifytoken_1.verifyToken, books_controller_1.createBook);
 router.get('/books', books_controller_1.getBooks);
 router.get('/books/:id', verifytoken_1.verifyToken, books_controller_1.getBook);

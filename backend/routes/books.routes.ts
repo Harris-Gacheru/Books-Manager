@@ -4,6 +4,7 @@ import { verifyToken } from '../middleware/verifytoken'
 
 const router = express.Router()
 
+router.get('/', (req, res) => {res.send('Get books')})
 router.post('/create', verifyToken, createBook)
 router.get('/books', getBooks)
 router.get('/books/:id', verifyToken, getBook)
