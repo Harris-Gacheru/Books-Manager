@@ -11,11 +11,11 @@ export class AuthService {
   constructor(private http: HttpClient, private route: Router) { }
 
   login(loginDetails: {email: string, password: string}){
-    return this.http.post<any>('http://localhost:5690/api/login', loginDetails)
+    return this.http.post<any>('https://books-manager-b.herokuapp.com/api/login', loginDetails)
   }
 
   register(user:  {username: string, email: string, password: string}){
-    return this.http.post<any>('http://localhost:5690/api/register', user)
+    return this.http.post<any>('https://books-manager-b.herokuapp.com/api/register', user)
   }
 
   getToken(){
