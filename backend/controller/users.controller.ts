@@ -55,7 +55,7 @@ export const login: RequestHandler = async(req, res) => {
             res.status(400).send({message: 'Invalid credentials'})
         }
     } catch (error: any) {
-        res.json({error: error.message})
+        res.json({error: error})
     }
     
 }
