@@ -33,7 +33,7 @@ export const getBooks: RequestHandler = async(req, res) => {
         if (!books.recordset[0]) {
             res.json({message: 'No books available'})
         }
-        res.json(books.recordset)
+        res.json(books.recordset).send('Books')
     } catch (error: any) {
         res.json({error: error.message})
     }

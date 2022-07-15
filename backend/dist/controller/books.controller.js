@@ -43,7 +43,7 @@ const getBooks = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         if (!books.recordset[0]) {
             res.json({ message: 'No books available' });
         }
-        res.json(books.recordset);
+        res.json(books.recordset).send('Books');
     }
     catch (error) {
         res.json({ error: error.message });
