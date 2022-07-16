@@ -17,8 +17,8 @@ router.get('/', async (req, res) => {
             res.json({message: 'No books available'})
         }
         res.json(books.recordset).send('Books')
-    } catch (error: any) {
-        res.json({error: error})
+    } catch (error) {
+        res.json({err: error})
     }
 })
 router.post('/create', verifyToken, createBook)

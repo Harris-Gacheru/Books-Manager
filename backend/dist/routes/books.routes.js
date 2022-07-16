@@ -31,7 +31,7 @@ router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.json(books.recordset).send('Books');
     }
     catch (error) {
-        res.json({ error: error });
+        res.json({ err: error });
     }
 }));
 router.post('/create', verifytoken_1.verifyToken, books_controller_1.createBook);
