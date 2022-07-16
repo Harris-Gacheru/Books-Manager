@@ -20,9 +20,11 @@ const verifytoken_1 = require("../middleware/verifytoken");
 const router = express_1.default.Router();
 router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        res.send('Getting books');
         let pool = yield mssql_1.default.connect(sqlconfig_1.default);
         const books = yield pool.request().execute('getbooks');
+        if (pool) {
+            return res.send('Getting books');
+        }
         if (!books.recordset[0]) {
             res.json({ message: 'No books available' });
         }
