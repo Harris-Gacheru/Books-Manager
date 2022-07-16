@@ -51,6 +51,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             .input('email', mssql_1.default.VarChar, email)
             .execute('getuser');
         if (user.recordset[0]) {
+            res.send('User exists');
             if (user.recordset[0].password === password) {
                 const payload = yield pool.request().query(`select username, email from users where email = '${email}'`);
                 const token = jsonwebtoken_1.default.sign(payload, process.env.SECRET_KEY);
