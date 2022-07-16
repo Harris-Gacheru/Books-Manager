@@ -12,13 +12,13 @@ router.get('/', async (req, res) => {
         const books = await pool.request().execute('getbooks')
         
         if (pool) {return res.send('Getting books')}
-
+        
         if (!books.recordset[0]) {
             res.json({message: 'No books available'})
         }
         res.json(books.recordset).send('Books')
-    } catch (error) {
-        res.json({err: error})
+    } catch (error: any) {
+        res.json({error: error.message})
     }
 })
 router.post('/create', verifyToken, createBook)
