@@ -7,8 +7,8 @@ import { verifyToken } from '../middleware/verifytoken'
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    res.send('Getting books')
     try {
+        res.send('Getting books')
         let pool = await mssql.connect(sqlConfig)
         const books = await pool.request().execute('getbooks')
 

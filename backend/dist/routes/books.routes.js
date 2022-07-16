@@ -19,8 +19,8 @@ const books_controller_1 = require("../controller/books.controller");
 const verifytoken_1 = require("../middleware/verifytoken");
 const router = express_1.default.Router();
 router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    res.send('Getting books');
     try {
+        res.send('Getting books');
         let pool = yield mssql_1.default.connect(sqlconfig_1.default);
         const books = yield pool.request().execute('getbooks');
         if (!books.recordset[0]) {
